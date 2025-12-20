@@ -1,7 +1,7 @@
 class CreditCard:
     """ A consumer credit card."""
 
-    def __init__(self, customer, bank, acnt, limit):
+    def __init__(self, customer, bank, acnt, limit, balance=0):
         """
         Create a new credit card instance.
 
@@ -17,7 +17,7 @@ class CreditCard:
         self._bank = bank
         self._account = acnt
         self._limit = limit
-        self._balance = 0
+        self._balance = balance
 
     def get_customer(self):
         """Return name of the customer."""
@@ -43,6 +43,9 @@ class CreditCard:
         """Charge given price to the card, assuing sufficient credit limit.
 
             Return True if charge was processed; False if charge was denied"""
+        if not isinstance(price, (float, int)):
+            raise TypeError
+            
         if price + self._balance > self._limit:
             return False
         else:
@@ -51,6 +54,12 @@ class CreditCard:
 
     def make_payment(self, amount):
         """Processes customer payment that reduces balance"""
+        if not isinstance(amount, (float,int)):
+            raise TypeError
+
+        if amount < 0:
+            raise ValueError
+
         self._balance -= amount
 
 
@@ -93,6 +102,8 @@ if __name__ == '__main__':
     print(wallet[0].get_balance())
     wallet[0].make_payment(5)
     print(wallet[0].get_balance())
+
+    # wallet[0].charge("val")
 
 #The class isn't entirely robust as of yet - need type checking to prevent make_payment('candy') for instance
 
