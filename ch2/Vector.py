@@ -29,6 +29,15 @@ class Vector:
             result[j] = self[j] + other[j]
         return result #We are returning a new instance of our Vector class 
 
+    def __sub__(self, other):
+        return self + -other
+
+    def __neg__(self):
+        neg = Vector(len(self))
+        for i in range(len(self)):
+            neg[i] = -self[i]
+        return neg
+
     def __eq__(self, other):
         return self._coords == other._coords
         
@@ -53,6 +62,8 @@ if __name__ == '__main__':
 
     print(v)
     print(w)
+    print(-v)
+    print(v-w)
     print(v+w)
 
     """Again, this class is not robust yet. Need more type-checking, for instance"""
