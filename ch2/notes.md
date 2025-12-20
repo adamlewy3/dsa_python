@@ -56,3 +56,22 @@ As a demonstration, we extend the CreditCard class.
  
 The PredatoryCreditCard subclass directly accesses the data member self._balance, the underscored name, by convention, suggests that it is a nonpublic member - so is it okay that we access it? Yes - there are two 'levels' of access control in most OOP-supporting languages. Protected variables, which are accessible to subclasses, but not to the general public. Private variables, which are not accessible to either. _balance is protected but not private. Python does not support formal access control, so convention for private variables is a double underscore. 
 
+We say a class is an abstract base class if its only  purpose is to serve as a base class through inheritence. In other words, it is one that cannot be directly instantiated, which a concrete class is one that can be instantiated. The Progression class is technically concrete, though it is functionally an abstract base class.
+
+Python's collections module provides several abstract base classes that help when defining custom data structures that share a common interface with some of Python's built-in data structures. These rely on an object-oriented software design pattern known as the template method pattern. It is when an abstract base class provides concrete behaviours that rely upon calls to other abstract behaviours. As soon as a subclass provides definitions for these, the inherited concrete behaviours are well defined. For instance, collections.Sequence provides an iterator method as soon as len and getitem are defined. 
+
+Finally, note that if a subclass provides its own implementation of an inherited behaviours from a base class, the new definition overrides the inherited one.
+
+### Namespaces and Object-Orientation
+
+Read about this later. 
+
+### Shallow and Deep Copying
+
+Suppose that we have a list of colours, say "warmcolours". How do I copy it?
+
+If I set warmcolours = palette, say then any way in which I edit palette will also edit warmcolours, as I have only assigned a new alias to the underlying list. If I set palette = list(warmcolours), then I am closer - I can add/remove things from palette without changing warmcolours. But as lists in python are refernetial, if I try edit one of the elements of palette, then I will also edit that element of warmcolours. This is called a shallow copy.
+
+To get a deepcopy of objects, we need to use python's copy module - copy.deepcopy. 
+
+ 
