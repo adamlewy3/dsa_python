@@ -54,3 +54,5 @@ An example of this is Python's Exception Hierarchy - see pg83.
 
 As a demonstration, we extend the CreditCard class.
  
+The PredatoryCreditCard subclass directly accesses the data member self._balance, the underscored name, by convention, suggests that it is a nonpublic member - so is it okay that we access it? Yes - there are two 'levels' of access control in most OOP-supporting languages. Protected variables, which are accessible to subclasses, but not to the general public. Private variables, which are not accessible to either. _balance is protected but not private. Python does not support formal access control, so convention for private variables is a double underscore. 
+
