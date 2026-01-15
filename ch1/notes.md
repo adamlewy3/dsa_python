@@ -83,4 +83,13 @@ There are similar comprehensions for sets, generators and dictionaries. For inst
 total = sum(k*k for k in range(1,n+1))
 '''
 
+### Scopes and Namespaces
+
+Suppose we run x+y in Python. The names x and y must have been associated with objects that serve as values, and a NameError will be raised if there is no such definition. This process of determining a value associated with an identifier is known as name resolution.
+
+When an identifier is assigned to a value, that definition is made with a specific scope. Each distinct scope is represented using an abstraction known as a *namespace*. This manages all identifiers that are currently defined in a given scope.
+
+When an identifier is indicated in a command, Python searches a series of namespaces in the process of name resolution. First, the most locally enclosing scope is search. If not found, the next outer scope is searched and so on. 
+
+Each instance of a class has its own namespace to store its attributes, and each class has a namespace too.
 

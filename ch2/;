@@ -1,0 +1,35 @@
+class Polynomial:
+    def __init__(self, d=0):
+        assert isinstance(d, int)
+        self._coeffs = [0] * (d+1)
+        self._degree = d
+
+    def __len__(self):
+        return len(self._coeffs)
+
+    def deg(self):
+        return self._degree
+
+    def __getitem__(self,j):
+        """ Return the coefficient of x^j """
+        return self._coeffs[j]
+
+    def __setitem__(self, j, val):
+        """ Set the coefficient of x^j """
+        self._coeffs[j] = val
+
+    def __eq__(self, other):
+        return self._coeffs == other._coeffs
+
+    def __add__(self, other):
+        total = Polynomial(max(self.deg(), other.deg()))
+        print(total)
+
+    
+
+if __name__ == '__main__':
+    p1 = Polynomial(3)
+    p2 = Polynomial(5)
+
+    p3 = Polynomial((max(p1.deg(), p2.deg()))
+    print(p3.deg())

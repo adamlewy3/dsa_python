@@ -105,31 +105,39 @@ class Hanoi:
         pass
 
 
+    @staticmethod
+    def get_aux_rod(data):
+        if 1 not in data:
+            return 1
+        if 2 not in data:
+            return 2
+        if 3 not in data:
+            return 3
+
     def move_top(self, i, n, m):
-        self.print_pos()
         """
         Moves the top i <= self.n blocks from rod n to rod m
 
         Here, we also assume that the we are starting with a fresh block orientation.
 
         """
-        for x in range(2):
-            if x+1 not in {n,m}:
-                aux_rod = x
-
+        aux_rod = Hanoi.get_aux_rod({n,m})
         print(aux_rod)
-        if i == 1:
-            self.move_disk(n,m,printed_move = True)
-
         if i == 2:
             self.move_disk(n,aux_rod)
             self.move_disk(n,m)
             self.move_disk(aux_rod,m)
 
+
+        
         else:
-            self.move_top(i-1,n, aux_rod)
+            self.move_top(i-1, n, aux_rod)
             self.move_disk(n,m)
-            self.move_top(i-1, aux_rod,m)
+            self.move_top(i-1,aux_rod,m)
+
+    def return_to_original(self):
+        pass
+
 
 if __name__ == '__main__':
     """
@@ -143,6 +151,13 @@ if __name__ == '__main__':
     h1.print_pos()
     """
 
+
     h3 = Hanoi(3)
     h3.move_top(3,1,3)
     h3.print_pos()
+    
+
+    h4 = Hanoi(4)
+    h4.move_top(4,1,3)
+    h4.print_pos()
+    print(h4.move_storage)

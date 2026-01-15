@@ -57,6 +57,16 @@ gen2 = (i for i in range(8,-10,-2))
 list1 = [2**i for i in range(9)]
 #print(list1)
 
+#C-1.14
+def myfunc(data): 
+    if not isinstance(data, (list, tuple, set)):
+        raise TypeError
+    else:
+        if len(data) == len(set(data)):
+            return True
+        else:
+            return False
+
 #C-1.18
 list2 = [i**2 + i for i in range(10)]
 #print(list2)
@@ -70,3 +80,5 @@ print(ord('a'))
 
 print([chr(i+65) for i in range(26)])
 print([chr(i+97) for i in range(26)])
+
+print(myfunc((1,2,4,3)))
